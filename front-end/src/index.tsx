@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 // load mock apis
-import '_mockApis';
+import 'assets/_mockApis';
 
 // project imports
 import App from 'App';
@@ -14,7 +14,7 @@ import { BASE_PATH } from 'config';
 import { store, persister } from 'store';
 import * as serviceWorker from 'serviceWorker';
 import reportWebVitals from 'reportWebVitals';
-import { ConfigProvider } from 'contexts/ConfigContext';
+import { ConfigProvider } from 'services/contexts/ConfigContext';
 
 // style + assets
 import 'assets/scss/style.scss';

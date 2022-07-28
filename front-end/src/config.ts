@@ -1,5 +1,39 @@
 // types
-import { ConfigProps } from 'types/config';
+import { ConfigProps } from 'types/template/config';
+
+export enum Order {
+    ASC = 'ASC',
+    DESC = 'DESC'
+}
+
+export const DEFAULT_PAGINATION = {
+    order: Order.ASC,
+    page: 1,
+    take: 10,
+    sortColumn: '',
+    query: ''
+};
+
+export const timeOfDay = [
+    { title: '6H', value: '6H' },
+    { title: '7H', value: '6H' },
+    { title: '8H', value: '6H' },
+    { title: '9H', value: '6H' },
+    { title: '10H', value: '10H' },
+    { title: '11H', value: '11H' },
+    { title: '12H', value: '12H' },
+    { title: '13H', value: '13H' },
+    { title: '14H', value: '14H' },
+    { title: '15H', value: '15H' },
+    { title: '16H', value: '16H' },
+    { title: '17H', value: '17H' },
+    { title: '18H', value: '18H' }
+];
+
+export const AUTH_LOCAL_STORAGE_KEY = {
+    ACCESS_TOKEN: 'token',
+    REFRESH_TOKEN: 'refreshToken'
+};
 
 export const JWT_API = {
     secret: 'SECRET-KEY',
@@ -31,6 +65,11 @@ export const AWS_API = {
 export const BASE_PATH = '';
 
 export const DASHBOARD_PATH = '/dashboard/default';
+
+export const CENTRE_LIST_PATH = '/centre/centre-list';
+
+export const defaultSuccessAlert = (message: string) => ({ open: true, message, variant: 'alert', alert: { color: 'primary' } });
+export const defaultErrorAlert = (message: string) => ({ open: true, message, variant: 'alert', alert: { color: 'error' } });
 
 const config: ConfigProps = {
     fontFamily: `'Roboto', sans-serif`,

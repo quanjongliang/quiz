@@ -2,36 +2,42 @@
 import Routes from 'routes';
 
 // project imports
-import Locales from 'ui-component/Locales';
-import NavigationScroll from 'layout/NavigationScroll';
-import RTLLayout from 'ui-component/RTLLayout';
-import Snackbar from 'ui-component/extended/Snackbar';
-import ThemeCustomization from 'themes';
+import Locales from 'components/Locales';
+import NavigationScroll from 'core/layout/NavigationScroll';
+import RTLLayout from 'components/RTLLayout';
+import Snackbar from 'components/extended/Snackbar';
+import ThemeCustomization from 'core/themes';
 
 // auth provider
-import { FirebaseProvider as AuthProvider } from 'contexts/FirebaseContext';
+import { FirebaseProvider as AuthProvider } from 'services/contexts/FirebaseContext';
+import * as React from 'react';
+import { ViewUIManager } from 'core/UIManager';
+
 // import { AWSCognitoProvider as AuthProvider } from 'contexts/AWSCognitoContext';
 // import { JWTProvider as AuthProvider } from 'contexts/JWTContext';
 // import { Auth0Provider as AuthProvider } from 'contexts/Auth0Context';
 
 // ==============================|| APP ||============================== //
 
-const App = () => (
-    <ThemeCustomization>
-        {/* RTL layout */}
-        <RTLLayout>
-            <Locales>
-                <NavigationScroll>
-                    <AuthProvider>
-                        <>
-                            <Routes />
-                            <Snackbar />
-                        </>
-                    </AuthProvider>
-                </NavigationScroll>
-            </Locales>
-        </RTLLayout>
-    </ThemeCustomization>
-);
+const App = () => {
+    return (
+        <ThemeCustomization>
+            {/* RTL layout */}
+            <RTLLayout>
+                <Locales>
+                    <NavigationScroll>
+                        <AuthProvider>
+                            <>
+                                <Routes />
+                                <Snackbar />
+                                <ViewUIManager />
+                            </>
+                        </AuthProvider>
+                    </NavigationScroll>
+                </Locales>
+            </RTLLayout>
+        </ThemeCustomization>
+    );
+};
 
 export default App;

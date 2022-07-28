@@ -1,5 +1,5 @@
 import * as createTheme from '@mui/material/styles';
-import { customShadows } from 'themes/shadows';
+import { customShadows } from 'core/themes/shadows';
 
 declare module '@mui/material/styles' {
     export interface ThemeOptions {

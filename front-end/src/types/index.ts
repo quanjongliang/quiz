@@ -8,17 +8,20 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 // project imports
 import { TablerIcon } from '@tabler/icons';
-import { CartStateProps } from './cart';
-import { KanbanStateProps } from './kanban';
-import { CustomerStateProps } from './customer';
-import { ContactStateProps } from './contact';
-import { ProductStateProps } from './e-commerce';
-import { ChatStateProps } from './chat';
-import { CalendarStateProps } from './calendar';
-import { MailStateProps } from './mail';
-import { UserStateProps } from './user';
+import { CartStateProps } from './template/cart';
+import { KanbanStateProps } from './template/kanban';
+import { CustomerStateProps } from './template/customer';
+import { ContactStateProps } from './template/contact';
+import { ProductStateProps } from './template/e-commerce';
+import { ChatStateProps } from './template/chat';
+import { CalendarStateProps } from './template/calendar';
+import { MailStateProps } from './template/mail';
+import { UserStateProps } from './template/user';
 
-import { SnackbarProps } from './snackbar';
+import { SnackbarProps } from './template/snackbar';
+import { CentreKechoStateProps } from './centre-kecho';
+import { ClassKechoStateProps } from './class-kecho';
+import { StaffKechoStateProps } from './staff-kecho';
 
 declare module '@mui/styles/defaultTheme' {
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -97,6 +100,7 @@ export type NavItemType = {
     breadcrumbs?: boolean;
     disabled?: boolean;
     chip?: ChipProps;
+    role?: string;
 };
 
 export type AuthSliderProps = {
@@ -121,6 +125,9 @@ export interface DefaultRootStateProps {
     calendar: CalendarStateProps;
     mail: MailStateProps;
     user: UserStateProps;
+    centreKecho: CentreKechoStateProps;
+    classKecho: ClassKechoStateProps;
+    staffKecho: StaffKechoStateProps;
 }
 
 export interface ColorProps {

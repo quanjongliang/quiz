@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 // project imports
-import useAuth from 'hooks/useAuth';
+import useAuth from 'services/hooks/useAuth';
 import { DASHBOARD_PATH } from 'config';
 import { GuardProps } from 'types';
 import { useEffect } from 'react';
