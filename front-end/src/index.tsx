@@ -1,43 +1,17 @@
-import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-// third party
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-
-// load mock apis
-import 'assets/_mockApis';
-
-// project imports
-import App from 'App';
-import { BASE_PATH } from 'config';
-import { store, persister } from 'store';
-import * as serviceWorker from 'serviceWorker';
-import reportWebVitals from 'reportWebVitals';
-import { ConfigProvider } from 'services/contexts/ConfigContext';
-
-// style + assets
-import 'assets/scss/style.scss';
-
-// ==============================|| REACT DOM RENDER  ||============================== //
-
-ReactDOM.render(
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persister}>
-            <ConfigProvider>
-                <BrowserRouter basename={BASE_PATH}>
-                    <App />
-                </BrowserRouter>
-            </ConfigProvider>
-        </PersistGate>
-    </Provider>,
-    document.getElementById('root')
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

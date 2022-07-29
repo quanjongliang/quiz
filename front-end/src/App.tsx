@@ -1,43 +1,26 @@
-// routing
-import Routes from 'routes';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-// project imports
-import Locales from 'components/Locales';
-import NavigationScroll from 'core/layout/NavigationScroll';
-import RTLLayout from 'components/RTLLayout';
-import Snackbar from 'components/extended/Snackbar';
-import ThemeCustomization from 'core/themes';
-
-// auth provider
-import { FirebaseProvider as AuthProvider } from 'services/contexts/FirebaseContext';
-import * as React from 'react';
-import { ViewUIManager } from 'core/UIManager';
-
-// import { AWSCognitoProvider as AuthProvider } from 'contexts/AWSCognitoContext';
-// import { JWTProvider as AuthProvider } from 'contexts/JWTContext';
-// import { Auth0Provider as AuthProvider } from 'contexts/Auth0Context';
-
-// ==============================|| APP ||============================== //
-
-const App = () => {
-    return (
-        <ThemeCustomization>
-            {/* RTL layout */}
-            <RTLLayout>
-                <Locales>
-                    <NavigationScroll>
-                        <AuthProvider>
-                            <>
-                                <Routes />
-                                <Snackbar />
-                                <ViewUIManager />
-                            </>
-                        </AuthProvider>
-                    </NavigationScroll>
-                </Locales>
-            </RTLLayout>
-        </ThemeCustomization>
-    );
-};
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
 
 export default App;
