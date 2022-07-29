@@ -26,7 +26,7 @@ export class AppService {
 
   async downloadFileDrive(id:string){
     // const {webViewLink,name} = await this.driveRepository.findOneIfExist(id)
-    const drive= await this.driveRepository.findOne(id)
+    const drive= await this.driveRepository.findOne({where:{id}})
     if(!drive) throw new NotFoundException(`Drive id: ${id} not found`)
     const {webViewLink, name} = drive
     const file = fs.createWriteStream(name)

@@ -45,7 +45,7 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, password: string): Promise<User | null> {
-    const user = await this.userRepository.findOne({ username });
+    const user = await this.userRepository.findOne({ where:{username} });
     if (!user) throw new NotFoundException(AUTH_MESSAGE.USER.NOT_FOUND);
     const isMatch = await checkIsMatchPassword(password, user.password);
     if (isMatch) return user;
@@ -92,7 +92,10 @@ export class AuthService {
       );
     }
     const checkExistUser = await this.userRepository.findOne({
-      username: rawNewUser.username,
+where:{
+  username: rawNewUser.username,
+
+}
     });
     if (checkExistUser)
       throw new HttpException(AUTH_MESSAGE.USER.SUBMITTED, HttpStatus.ACCEPTED);
@@ -128,7 +131,7 @@ export class AuthService {
 
   async forgetPassword(forgetPasswordDto: ForgetPasswordDto) {
     const { username, newPassword, confirmNewPassword } = forgetPasswordDto;
-    const user = await this.userRepository.findOne({ username });
+    const user = await this.userRepository.findOne({ where:{username} });
     if (!user) throw new NotFoundException(AUTH_MESSAGE.USER.NOT_FOUND);
     if (newPassword !== confirmNewPassword)
       throw new ConflictException(AUTH_MESSAGE.USER.CONFIRM_PASSWORD);
@@ -156,7 +159,7 @@ export class AuthService {
         HttpStatus.REQUEST_TIMEOUT
       );
     }
-    const user = await this.userRepository.findOne({ username });
+    const user = await this.userRepository.findOne({ where:{username} });
     const changedPasswordUser = await this.userRepository.save({
       ...user,
       password,
@@ -180,7 +183,7 @@ export class AuthService {
     updateUserRoleDto: UpdateUserRoleDto
   ): Promise<[User]> {
     const { username, role } = updateUserRoleDto;
-    const checkUser = await this.userRepository.findOne({ username });
+    const checkUser = await this.userRepository.findOne({ where:{username} });
     if (!checkUser)
       throw new HttpException(
         AUTH_MESSAGE.USER.NOT_FOUND,

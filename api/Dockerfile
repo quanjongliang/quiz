@@ -1,4 +1,4 @@
-FROM node:16 as build
+FROM node:latest
 
 # ENV PORT=3000
 
@@ -23,13 +23,19 @@ WORKDIR /app
 # Bundle app source
 COPY . .
 
-RUN npm i
-RUN npm i -g typeorm pg
+# RUN ls
+# RUN npm install -g npm@8.15.1
+RUN npm i --force
+# RUN npm i bcrypt@latest
+# RUN npm i
+# RUN npm i -g typeorm pg@8.0.2
+# RUN npm run build
+# RUN npm run typeorm migration:generate -- -n firstInitTable
 RUN npm run build
-
+COPY . .
 # RUN npm run typeorm migration:run
 
-EXPOSE 8080
+EXPOSE 5000
 # CMD [ "npm",'run', "start" ]
 CMD ["sh", "-c", "typeorm migration:run; node dist/main.js"]
 # CMD ["node","dist/main"]

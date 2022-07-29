@@ -68,7 +68,7 @@ export class DriveService {
   }
 
   async downloadFile(fileId: string) {
-    const { id, name, mimeType } = await this.driveRepository.findOne(fileId);
+    const { id, name, mimeType } = await this.driveRepository.findOneIfExist(fileId);
     const newName = randomUUID() + name;
     if (!id) throw new NotFoundException(`Drive id: ${id} not found!`);
     return this.driveService.files

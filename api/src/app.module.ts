@@ -13,13 +13,10 @@ import { DriveModule } from "@/drive/drive.module";
 import { diskStorage } from "multer";
 import { extname } from "path";
 import { v4 as uuid } from "uuid";
-import { VnPayModule } from "./vn-pay/vn-pay.module";
-import { BullModule } from "@nestjs/bull";
 import { PdfModule } from "./pdf";
-import { ApolloDriverConfig, ApolloDriver } from "@nestjs/apollo";
-import { GraphQLModule } from "@nestjs/graphql";
 import { HttpModule } from "@nestjs/axios";
-import { AppResolver } from "./app.resolver";
+import { TypeOrmExModule } from "./decorator";
+import { Drive, LIST_ENTITY, User, VnPay } from "./entity";
 @Module({
   imports: [
     // GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -36,12 +33,12 @@ import { AppResolver } from "./app.resolver";
         },
       }),
     }),
-    BullModule.forRoot({
-      redis: {
-        host: "localhost",
-        port: 6379,
-      },
-    }),
+    // BullModule.forRoot({
+    //   redis: {
+    //     host: "localhost",
+    //     port: 6379,
+    //   },
+    // }),
     DatabaseModule,
     MailerModule,
     RepositoryModule,
@@ -49,11 +46,11 @@ import { AppResolver } from "./app.resolver";
     MulterModule,
     CloudinaryModule,
     DriveModule,
-    VnPayModule,
     PdfModule,
     HttpModule,
+    TypeOrmExModule.forCustomRepository(LIST_ENTITY),
   ],
   controllers: [AppController],
-  providers: [AppService, UploadFileInterceptor, AppResolver],
+  providers: [AppService, UploadFileInterceptor, ],
 })
 export class AppModule {}

@@ -13,8 +13,8 @@ services:
     api:
         # image: be-base
         build:
-            dockerfile: ./Dockerfile
             context: ./api
+            dockerfile: ./Dockerfile
         command: npm run start:dev
         depends_on:
             - postgres
@@ -29,15 +29,15 @@ services:
             PORT: 3000
         ports:
             - "8000:3000"
-
-    front-end:
+    
+    frontend:
         build:
-            dockerfile: ./Dockerfile
             context: ./front-end
-        container_name: front-end
+            dockerfile: ./Dockerfile
+        command: npm run start
         ports:
-            - "4200:80"
-        depends_on:
-            - api
+            - "3000:3000"
+        links:
+            - "api"
     
   

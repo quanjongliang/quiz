@@ -1,4 +1,0 @@
-type CreateItem{
- name:String   
- description:String
-}
